@@ -2,6 +2,10 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use serde::{Deserialize, Serialize};
+use tauri::{api::path::{BaseDirectory, resolve_path}, Env};
+use std::{fs::{self, File}, io::Write};
+use std::path::PathBuf;
+
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Recipe {
@@ -17,37 +21,61 @@ struct Recipe {
 
 #[tauri::command]
 fn load_recipes() -> Vec<Recipe> {
-    vec![
-        Recipe {
-            name: "Ramen".to_string(),
-            image: "https://media.istockphoto.com/id/511793034/photo/japanese-ramen-soup-with-chicken-egg-chives-and-sprout.jpg?b=1&s=612x612&w=0&k=20&c=SpW8Op5RozB2pGVn6EJcZKd_xwND7zL923RJkvVx5IE=".to_string(),
-            ingredients: vec![
-                "1 1/2 cups all-purpose flour".to_string(),
-                "3 1/2 teaspoons baking powder".to_string(),
-                "1 teaspoon salt".to_string(),
-                "1 tablespoon white sugar".to_string(),
-                "1 1/4 cups milk".to_string(),
-                "1 egg".to_string(),
-                "3 tablespoons butter, melted".to_string(),
-            ],
-            instructions: vec![
-                "In a large bowl, sift together the flour, baking powder, salt and sugar.".to_string(),
-                "Make a well in the center and pour in the milk, egg and melted butter; mix until smooth.".to_string(),
-                "Heat a lightly oiled griddle or frying pan over medium high heat.".to_string(),
-                "Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake.".to_string(),
-                "Brown on both sides and serve hot.".to_string(),
-            ],
-            cuisine: "American".to_string(),
-            prep_time: 5,
-            cook_time: 15,
-            serves: 4,
-        }
-    ]
+    let context = tauri::generate_context!();
+    let path: PathBuf = resolve_path(
+        context.config(),
+        context.package_info(),
+        &Env::default(),
+        "recipes.json",
+        Some(BaseDirectory::AppData))
+        .expect("failed to resolve path");
+
+    // Ensure all parent directories exist
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent).expect("failed to create directories");
+    }
+
+    // If file does not exist, create it
+    if !path.exists() {
+        let mut file: File = File::create(&path).expect("failed to create file");
+        file.write_all("[]".as_bytes()).expect("failed to write '[]' to file");
+    }
+    let recipes: String = fs::read_to_string(&path).expect("failed to read file");
+    serde_json::from_str(&recipes).expect("failed to parse recipes")
+}
+
+#[tauri::command]
+fn save_recipes(recipes: Vec<Recipe>) {
+    let context = tauri::generate_context!();
+    let path: PathBuf = resolve_path(
+        context.config(),
+        context.package_info(),
+        &Env::default(),
+        "recipes.json",
+        Some(BaseDirectory::AppData))
+        .expect("failed to resolve path");
+
+    let recipes: String = serde_json::to_string(&recipes).expect("failed to serialize recipes");
+    fs::write(&path, recipes).expect("failed to write recipes to file");
+}
+
+#[tauri::command]
+fn add_recipe(recipe: Recipe) {
+    let mut recipes: Vec<Recipe> = load_recipes();
+    recipes.push(recipe);
+    save_recipes(recipes);
+}
+
+#[tauri::command]
+fn delete_recipe(recipe: Recipe) {
+    let mut recipes: Vec<Recipe> = load_recipes();
+    recipes.retain(|r| r.name != recipe.name);
+    save_recipes(recipes);
 }
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![load_recipes])
+        .invoke_handler(tauri::generate_handler![load_recipes, save_recipes, add_recipe, delete_recipe])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
