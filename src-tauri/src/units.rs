@@ -1,86 +1,68 @@
-enum Units {
-    Volume(VolumeUnits),
-    Weight(WeightUnits),
+use std::string::String;
+use serde::{Deserialize, Serialize};
+
+
+#[derive(Debug, Serialize, Deserialize)]
+pub enum KitchenUnit {
+    Milliliters,
+    Liters,
+    Teaspoons,
+    Tablespoons,
+    FluidOunces,
+    Cups,
+    Pints,
+    Quarts,
+    Gallons,
+    Milligrams,
+    Grams,
+    Kilograms,
+    Ounces,
+    Pounds,
+    Units,
 }
 
-enum VolumeUnits {
-    Metric(MetricVolumeUnits),
-    Imperial(ImperialVolumeUnits),
-    Units(f64),
-}
+impl KitchenUnit {
+    pub fn from_string(s: String) -> Option<Self> {
+        let trimed_string = s.trim().to_lowercase();
+        let unit_string = trimed_string.trim_end_matches('s');
 
-enum WeightUnits {
-    Metric(MetricWeightUnits),
-    Imperial(ImperialWeightUnits),
-}
+        match unit_string {
+            "ml" | "milliliter" => Some(KitchenUnit::Milliliters),
+            "l" | "liter" => Some(KitchenUnit::Liters),
+            "tsp" | "teaspoon" => Some(KitchenUnit::Teaspoons),
+            "tbsp" | "tablespoon" => Some(KitchenUnit::Tablespoons),
+            "fl oz" | "fluid ounce" => Some(KitchenUnit::FluidOunces),
+            "cup" => Some(KitchenUnit::Cups),
+            "pt" | "pint" => Some(KitchenUnit::Pints),
+            "qt" | "quart" => Some(KitchenUnit::Quarts),
+            "gal" | "gallon" => Some(KitchenUnit::Gallons),
+            "mg" | "milligram" => Some(KitchenUnit::Milligrams),
+            "g" | "gram" => Some(KitchenUnit::Grams),
+            "kg" | "kilogram" => Some(KitchenUnit::Kilograms),
+            "oz" | "ounce" => Some(KitchenUnit::Ounces),
+            "lb" | "pound" => Some(KitchenUnit::Pounds),
+            "unit" => Some(KitchenUnit::Units),
+            _ => None,
+        }
+    }
 
-// Metric volume units
-enum MetricVolumeUnits {
-    Milliliters(f64),
-    Liters(f64),
-}
-
-// Imperial volume units
-enum ImperialVolumeUnits {
-    Teaspoons(f64),
-    Tablespoons(f64),
-    FluidOunces(f64),
-    Cups(f64),
-    Pints(f64),
-    Quarts(f64),
-    Gallons(f64),
-}
-
-// Metric weight units
-enum MetricWeightUnits {
-    Milligrams(f64),
-    Grams(f64),
-    Kilograms(f64),
-}
-
-// Imperial weight units
-enum ImperialWeightUnits {
-    Ounces(f64),
-    Pounds(f64),
-}
-
-// Example of using these enums
-fn example_usage() {
-    // Represent 250 milliliters (metric volume)
-    let metric_volume = KitchenUnits::Volume(VolumeUnits::Metric(MetricVolumeUnits::Milliliters(250.0)));
-    // Represent 1 pound (imperial weight)
-    let imperial_weight = KitchenUnits::Weight(WeightUnits::Imperial(ImperialWeightUnits::Pounds(1.0)));
-
-    // Display examples
-    display_kitchen_unit(metric_volume);
-    display_kitchen_unit(imperial_weight);
-}
-
-// Mock function to display how a unit might be used
-fn display_kitchen_unit(unit: KitchenUnits) {
-    match unit {
-        KitchenUnits::Volume(v) => match v {
-            VolumeUnits::Metric(m) => match m {
-                MetricVolumeUnits::Milliliters(ml) => println!("{} ml", ml),
-                MetricVolumeUnits::Liters(l) => println!("{} l", l),
-            },
-            VolumeUnits::Imperial(i) => match i {
-                ImperialVolumeUnits::Teaspoons(tsp) => println!("{} tsp", tsp),
-                ImperialVolumeUnits::Tablespoons(tbsp) => println!("{} tbsp", tbsp),
-                _ => (),
-            },
-        },
-        KitchenUnits::Weight(w) => match w {
-            WeightUnits::Metric(m) => match m {
-                MetricWeightUnits::Grams(g) => println!("{} g", g),
-                MetricWeightUnits::Kilograms(kg) => println!("{} kg", kg),
-                _ => (),
-            },
-            WeightUnits::Imperial(i) => match i {
-                ImperialWeightUnits::Ounces(oz) => println!("{} oz", oz),
-                ImperialWeightUnits::Pounds(lb) => println!("{} lb", lb),
-                _ => (),
-            },
-        },
+    pub fn to_string(&self, multiple: bool) -> String {
+        match self {
+            KitchenUnit::Milliliters => if multiple { "milliliters".to_string() } else { "milliliter".to_string() },
+            KitchenUnit::Liters => if multiple { "liters".to_string() } else { "liter".to_string() },
+            KitchenUnit::Teaspoons => if multiple { "teaspoons".to_string() } else { "teaspoon".to_string() },
+            KitchenUnit::Tablespoons => if multiple { "tablespoons".to_string() } else { "tablespoon".to_string() },
+            KitchenUnit::FluidOunces => if multiple { "fluid ounces".to_string() } else { "fluid ounce".to_string() },
+            KitchenUnit::Cups => if multiple { "cups".to_string() } else { "cup".to_string() },
+            KitchenUnit::Pints => if multiple { "pints".to_string() } else { "pint".to_string() },
+            KitchenUnit::Quarts => if multiple { "quarts".to_string() } else { "quart".to_string() },
+            KitchenUnit::Gallons => if multiple { "gallons".to_string() } else { "gallon".to_string() },
+            KitchenUnit::Milligrams => if multiple { "milligrams".to_string() } else { "milligram".to_string() },
+            KitchenUnit::Grams => if multiple { "grams".to_string() } else { "gram".to_string() },
+            KitchenUnit::Kilograms => if multiple { "kilograms".to_string() } else { "kilogram".to_string() },
+            KitchenUnit::Ounces => if multiple { "ounces".to_string() } else { "ounce".to_string() },
+            KitchenUnit::Pounds => if multiple { "pounds".to_string() } else { "pound".to_string() },
+            KitchenUnit::Units => if multiple { "units".to_string() } else { "unit".to_string() },
+        }
     }
 }

@@ -110,10 +110,28 @@
 <dialog id="recipe_model" class="modal">
     <div class="modal-box">
         {#if currentRecipe}
-            <h3 class="font-bold text-xl text-center bold">{currentRecipe.name}</h3>
-            <div class="stats shadow w-full items-center">
+            <h3 class="font-bold text-xl text-center bold pb-5">{currentRecipe.name}</h3>
+            <div class="flex w-auto pb-5 gap-5">
+                <!-- Instructions with normal wrapping -->
+                <div class="grid h-48 flex-grow card bg-base-300 rounded-box place-items-left p-5">
+                    <ol class="flex flex-col w-full h-full list-decimal overflow-auto list-inside">
+                        {#each currentRecipe.instructions as step}
+                            <li class="flex-grow text-left text-xs pt-1">{step}</li>
+                        {/each}
+                    </ol>
+                </div>
+                <!-- Ingredients with horizontal scrolling -->
+                <div class="grid h-48 card bg-base-300 rounded-box place-items-center p-5">
+                    <div class="flex flex-col w-min min-w-min h-full overflow-x-auto">
+                        {#each currentRecipe.ingredients as ingredient}
+                            <div class="flex-shrink-0 text-left text-xs whitespace-nowrap pb-1">{ingredient.name}</div>
+                        {/each}
+                    </div>
+                </div>
+            </div>
+            <div class="stats shadow w-full items-center bg-base-300">
                 <div class="stat">
-                  <div class="stat-figure text-secondary">
+                  <div class="stat-figure">
                     <span class="icon-[mdi--access-time]" style="width: 2.5rem; height: 2.5rem;"></span>
                   </div>
                   <div class="stat-title">Prep</div>
@@ -122,7 +140,7 @@
                 </div>
                 
                 <div class="stat">
-                  <div class="stat-figure text-secondary">
+                  <div class="stat-figure">
                     <span class="icon-[mdi--campfire]" style="width: 2.5rem; height: 2.5rem;"></span>
                   </div>
                   <div class="stat-title">Cook</div>
@@ -131,7 +149,7 @@
                 </div>
                 
                 <div class="stat">
-                  <div class="stat-figure text-secondary">
+                  <div class="stat-figure">
                     <span class="icon-[mdi--people]" style="width: 2.5rem; height: 2.5rem;"></span>                   
                   </div>
                   <div class="stat-title">Serves</div>

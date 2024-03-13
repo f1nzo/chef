@@ -1,0 +1,239 @@
+[
+    {
+        "id": 1,
+        "name": "Classic Spaghetti Carbonara",
+        "image": "https://images.pexels.com/photos/4518844/pexels-photo-4518844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ingredients": [
+            "150g pancetta",
+            "2 large eggs",
+            "1/2 cup grated Parmesan cheese",
+            "2 cloves garlic",
+            "Salt and black pepper to taste"
+        ],
+        "instructions": [
+            "Cook spaghetti according to package instructions.",
+            "Fry pancetta with garlic until crispy.",
+            "Beat eggs and Parmesan in a bowl, then mix with the drained pasta and pancetta.",
+            "Season with salt and pepper and serve immediately."
+        ],
+        "cuisine": "Italian",
+        "prep_time": 10,
+        "cook_time": 20,
+        "serves": 4
+    },
+    {
+        "id": 2,
+        "name": "Classic Caesar Salad",
+        "image": "https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ingredients": [
+            "1 head romaine lettuce",
+            "1/2 cup croutons",
+            "1/4 cup grated Parmesan cheese",
+            "Caesar dressing",
+            "1 chicken breast",
+            "Salt and black pepper to taste"
+        ],
+        "instructions": [
+            "Grill the chicken breast and slice it.",
+            "Chop the romaine lettuce and mix with croutons and Parmesan.",
+            "Add the Caesar dressing and top with sliced chicken.",
+            "Season with salt and pepper to taste."
+        ],
+        "cuisine": "American",
+        "prep_time": 15,
+        "cook_time": 10,
+        "serves": 2
+    },
+    {
+        "id": 3,
+        "name": "Vegetable Stir Fry",
+        "image": "https://media.istockphoto.com/id/588595864/photo/steaming-mixed-vegetables-in-the-wok-asian-style-cooking.jpg?b=1&s=612x612&w=0&k=20&c=CJn9a4LQUk3ZrGDd4-Km9NYIuToWmHUrraAja5Cmekc=",
+        "ingredients": [
+            "2 cups mixed vegetables (bell peppers, broccoli, carrots)",
+            "2 tbsp soy sauce",
+            "1 tbsp olive oil",
+            "1 tsp garlic, minced",
+            "1 tsp ginger, minced",
+            "Salt and black pepper to taste"
+        ],
+        "instructions": [
+            "Heat olive oil in a pan over medium heat.",
+            "Add garlic and ginger, sauté for 1 minute.",
+            "Add mixed vegetables and soy sauce, stir-fry for 5-7 minutes.",
+            "Season with salt and pepper, serve hot."
+        ],
+        "cuisine": "Asian",
+        "prep_time": 10,
+        "cook_time": 7,
+        "serves": 2
+    },
+    {
+        "id": 4,
+        "name": "Beef Tacos",
+        "image": "https://images.pexels.com/photos/2087748/pexels-photo-2087748.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "ingredients": [
+            "500g ground beef",
+            "1/2 onion, diced",
+            "1 packet taco seasoning",
+            "1/2 cup water",
+            "Taco shells",
+            "Shredded lettuce, diced tomatoes, shredded cheese, sour cream (for garnish)"
+        ],
+        "instructions": [
+            "Brown ground beef and onion in a pan.",
+            "Stir in taco seasoning and water, simmer until thickened.",
+            "Fill taco shells with beef mixture and garnish as desired."
+        ],
+        "cuisine": "Mexican",
+        "prep_time": 15,
+        "cook_time": 15,
+        "serves": 4
+    },
+    {
+        "id": 5,
+        "name": "Chicken Curry",
+        "image": "https://images.pexels.com/photos/674574/pexels-photo-674574.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "ingredients": [
+            "1kg chicken pieces",
+            "2 onions, chopped",
+            "2 tomatoes, chopped",
+            "1 tbsp ginger-garlic paste",
+            "2 tbsp curry powder",
+            "1 cup coconut milk",
+            "Salt to taste",
+            "2 tbsp vegetable oil"
+        ],
+        "instructions": [
+            "Heat oil in a large pot, add onions and ginger-garlic paste, sauté until golden.",
+            "Add chicken pieces and brown on all sides.",
+            "Mix in tomatoes and curry powder, cook for 5 minutes.",
+            "Pour in coconut milk, simmer until chicken is cooked through.",
+            "Season with salt, serve with rice."
+        ],
+        "cuisine": "Indian",
+        "prep_time": 20,
+        "cook_time": 40,
+        "serves": 4
+    },
+    {
+        "id": 6,
+        "name": "Lemon Garlic Salmon",
+        "image": "https://images.pexels.com/photos/842142/pexels-photo-842142.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "ingredients": [
+            "4 salmon fillets",
+            "2 lemons, sliced",
+            "4 cloves garlic, minced",
+            "2 tbsp olive oil",
+            "Salt and pepper to taste"
+        ],
+        "instructions": [
+            "Preheat oven to 200°C (400°F).",
+            "Place salmon on a baking sheet, season with salt, pepper, garlic, and top with lemon slices.",
+            "Drizzle with olive oil, bake for 12-15 minutes."
+        ],
+        "cuisine": "Mediterranean",
+        "prep_time": 10,
+        "cook_time": 15,
+        "serves": 4
+    },
+    {
+        "id": 7,
+        "name": "Avocado Toast",
+        "image": "https://images.pexels.com/photos/1351238/pexels-photo-1351238.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "ingredients": [
+            "2 slices of bread",
+            "1 ripe avocado",
+            "Salt and pepper to taste",
+            "Red pepper flakes (optional)",
+            "Lemon juice (optional)"
+        ],
+        "instructions": [
+            "Toast the bread slices to your liking.",
+            "Mash the avocado and spread it on the toasted bread.",
+            "Season with salt, pepper, red pepper flakes, and a squeeze of lemon juice."
+        ],
+        "cuisine": "American",
+        "prep_time": 5,
+        "cook_time": 2,
+        "serves": 1
+    },
+    {
+        "id": 8,
+        "name": "Mushroom Risotto",
+        "image": "https://www.themediterraneandish.com/wp-content/uploads/2023/05/TMD-Mushroom-Risotto-WEB-7.jpg",
+        "ingredients": [
+            "1 cup Arborio rice",
+            "2 cups mushrooms, sliced",
+            "1 onion, diced",
+            "2 cloves garlic, minced",
+            "4 cups vegetable broth",
+            "1/2 cup Parmesan cheese",
+            "2 tbsp olive oil",
+            "Salt and pepper to taste"
+        ],
+        "instructions": [
+            "Heat olive oil in a pan, add onion and garlic, cook until translucent.",
+            "Add mushrooms, cook until soft.",
+            "Stir in Arborio rice, cook for 1 minute.",
+            "Gradually add broth, stirring constantly, until rice is creamy and cooked.",
+            "Stir in Parmesan, season with salt and pepper."
+        ],
+        "cuisine": "Italian",
+        "prep_time": 10,
+        "cook_time": 30,
+        "serves": 4
+    },
+    {
+        "id": 9,
+        "name": "Tomato Soup",
+        "image": "https://www.allrecipes.com/thmb/qAepi_kEfeNzEjm4TtdMDHMeHnE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/277311spicy-fresh-tomato-soupFranceC4x3-56454ad082214f33960f62665fc8c169.jpg",
+        "ingredients": [
+            "1kg ripe tomatoes, chopped",
+            "1 onion, chopped",
+            "2 carrots, chopped",
+            "2 stalks celery, chopped",
+            "2 cloves garlic, minced",
+            "1 liter vegetable broth",
+            "Salt and pepper to taste",
+            "2 tbsp olive oil"
+        ],
+        "instructions": [
+            "Heat olive oil in a large pot, add onions, carrots, celery, and garlic, cook until soft.",
+            "Add tomatoes and vegetable broth, bring to a boil, then simmer for 30 minutes.",
+            "Blend soup until smooth, season with salt and pepper, serve hot."
+        ],
+        "cuisine": "French",
+        "prep_time": 15,
+        "cook_time": 45,
+        "serves": 4
+    },
+    {
+        "id": 10,
+        "name": "Chocolate Chip Cookies",
+        "image": "https://handletheheat.com/wp-content/uploads/2020/10/BAKERY-STYLE-CHOCOLATE-CHIP-COOKIES-9-637x637-1.jpg",
+        "ingredients": [
+            "2 1/4 cups all-purpose flour",
+            "1 tsp baking soda",
+            "Salt",
+            "1 cup unsalted butter, softened",
+            "3/4 cup granulated sugar",
+            "3/4 cup packed brown sugar",
+            "1 tsp vanilla extract",
+            "2 large eggs",
+            "2 cups chocolate chips"
+        ],
+        "instructions": [
+            "Preheat oven to 375°F (190°C).",
+            "Mix flour, baking soda, and salt in a bowl.",
+            "In another bowl, beat butter, granulated sugar, brown sugar, and vanilla extract.",
+            "Add eggs one at a time, gradually mix in flour.",
+            "Stir in chocolate chips, drop by spoonfuls onto baking sheets.",
+            "Bake for 9-11 minutes or until golden brown."
+        ],
+        "cuisine": "American",
+        "prep_time": 15,
+        "cook_time": 10,
+        "serves": 24
+    }
+]
+

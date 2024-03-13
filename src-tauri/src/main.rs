@@ -1,6 +1,9 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+mod units;
+
+use units::KitchenUnit;
 use serde::{Deserialize, Serialize};
 use tauri::{api::path::{BaseDirectory, resolve_path}, Env};
 use std::{fs::{self, File}, io::Write};
@@ -8,16 +11,23 @@ use std::path::PathBuf;
 
 
 #[derive(Debug, Serialize, Deserialize)]
+struct Ingredient {
+    name: String, // Name of the ingredient
+    quantity: f64, // Quantity of the ingredient
+    unit: String, // Unit of the ingredient
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 struct Recipe {
-    id: u32,
-    name: String,
-    image: String,
-    ingredients: Vec<String>,
-    instructions: Vec<String>,
-    cuisine: String,
-    prep_time: u32,
-    cook_time: u32,
-    serves: u32,
+    id: u32, // Unique identifier for the recipe
+    name: String, // Name of the recipe
+    image: String, // Image of the recipe
+    ingredients: Vec<Ingredient>, // Ingredients of the recipe
+    instructions: Vec<String>, // Instructions for the recipe
+    cuisine: String, // Cuisine of the recipe
+    prep_time: u32, // Preparation time in minutes
+    cook_time: u32, // Cooking time in minutes
+    serves: u32, // Number of servings
 }
 
 #[tauri::command]
