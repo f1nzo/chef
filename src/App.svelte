@@ -23,7 +23,7 @@
   <!-- Bottom Navigation -->
   <div class="btm-nav z-50">
     <button
-      class="{selectedNavOption === 'home' ? 'active' : ''}"
+      class="{selectedNavOption === 'home' ? 'active' : ''} nav-button"
       on:click={() => selectNavOption('home')}
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -31,7 +31,7 @@
       </svg>      
     </button>
     <button
-      class="{selectedNavOption === 'recipes' ? 'active' : ''}"
+      class="{selectedNavOption === 'recipes' ? 'active' : ''} nav-button"
       on:click={() => selectNavOption('recipes')}
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -39,7 +39,7 @@
       </svg>       
     </button>
     <button
-      class="{selectedNavOption === 'planner' ? 'active' : ''}"
+      class="{selectedNavOption === 'planner' ? 'active' : ''} nav-button"
       on:click={() => selectNavOption('planner')}
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -50,5 +50,7 @@
 </main>
 
 <style>
-
+  .nav-button:hover {
+    @apply bg-base-300;
+  }
 </style>

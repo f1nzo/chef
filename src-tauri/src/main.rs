@@ -9,6 +9,7 @@ use std::path::PathBuf;
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Recipe {
+    id: u32,
     name: String,
     image: String,
     ingredients: Vec<String>,
@@ -60,16 +61,21 @@ fn save_recipes(recipes: Vec<Recipe>) {
 }
 
 #[tauri::command]
-fn add_recipe(recipe: Recipe) {
+fn add_recipe(mut recipe: Recipe) {
     let mut recipes: Vec<Recipe> = load_recipes();
+
+    let new_id = recipes.iter().map(|r| r.id).max().unwrap_or(0) + 1;
+    recipe.id = new_id;
+
     recipes.push(recipe);
     save_recipes(recipes);
 }
 
 #[tauri::command]
-fn delete_recipe(recipe: Recipe) {
+fn delete_recipe(recipe_id: u32) {
     let mut recipes: Vec<Recipe> = load_recipes();
-    recipes.retain(|r| r.name != recipe.name);
+
+    recipes.retain(|r| r.id != recipe_id);
     save_recipes(recipes);
 }
 

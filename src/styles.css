@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-repeat: repeat;
-  background-position: center;
+:root {
+  @apply bg-base-200;
 }
 
 *::-webkit-scrollbar {
