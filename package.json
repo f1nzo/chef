@@ -11,9 +11,11 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@iconify-json/mdi": "^1.1.64",
     "@tauri-apps/api": "^1"
   },
   "devDependencies": {
+    "@iconify/tailwind": "^0.1.4",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@tauri-apps/cli": "^1",
     "@tsconfig/svelte": "^5.0.2",

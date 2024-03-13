@@ -110,8 +110,36 @@
 <dialog id="recipe_model" class="modal">
     <div class="modal-box">
         {#if currentRecipe}
-            <h3 class="font-bold text-lg">{currentRecipe.name}</h3>
-            <img src="{currentRecipe.image}" alt="{currentRecipe.name}" class="py-5"/>
+            <h3 class="font-bold text-xl text-center bold">{currentRecipe.name}</h3>
+            <div class="stats shadow w-full items-center">
+                <div class="stat">
+                  <div class="stat-figure text-secondary">
+                    <span class="icon-[mdi--access-time]" style="width: 2.5rem; height: 2.5rem;"></span>
+                  </div>
+                  <div class="stat-title">Prep</div>
+                  <div class="stat-value">{currentRecipe.prep_time}</div>
+                  <div class="stat-desc">min</div>
+                </div>
+                
+                <div class="stat">
+                  <div class="stat-figure text-secondary">
+                    <span class="icon-[mdi--campfire]" style="width: 2.5rem; height: 2.5rem;"></span>
+                  </div>
+                  <div class="stat-title">Cook</div>
+                  <div class="stat-value">{currentRecipe.cook_time}</div>
+                  <div class="stat-desc">min</div>
+                </div>
+                
+                <div class="stat">
+                  <div class="stat-figure text-secondary">
+                    <span class="icon-[mdi--people]" style="width: 2.5rem; height: 2.5rem;"></span>                   
+                  </div>
+                  <div class="stat-title">Serves</div>
+                  <div class="stat-value">{currentRecipe.serves}</div>
+                  <div class="stat-desc">people</div>
+                </div>
+                
+              </div>
         {/if}
     </div>
     <form method="dialog" class="modal-backdrop">
